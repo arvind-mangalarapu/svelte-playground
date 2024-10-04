@@ -31,6 +31,13 @@
 	}
 </script>
 
+<button
+	on:click={() => (options = options === 'checkbox' ? 'radio' : 'checkbox')}
+	class="text-gray-500 border border-gray-500 hover:text-gray-700 hover:border-gray-700 px-4 py-2 rounded ml-10 mt-10 transition duration-200"
+>
+	Toggle</button
+>
+
 <div class="p-4 space-y-4">
 	<h2 class="text-xl font-bold">Selected Products</h2>
 
