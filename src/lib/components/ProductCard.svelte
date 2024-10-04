@@ -3,7 +3,6 @@
 	import RadioButton from '$lib/components/selectProduct/RadioButton.svelte';
 	import Product from '$lib/components/selectProduct/Product.svelte';
 
-	// Sample product list
 	const products = [
 		'Product 1',
 		'Product 2',
@@ -19,27 +18,26 @@
 
 	export let options: 'checkbox' | 'radio';
 
-	let selectedProducts = []; // For checkbox selections
-	let selectedRadioProduct = null; // For radio selection
+	let selectedProducts: string[] = []; // Checkbox selections
+	let selectedRadioProduct: string | null = null; // Radio selection
 
-	// Get combined list of selected products
+	// Combine checkbox and radio selections
 	$: combinedSelectedProducts = [...selectedProducts, selectedRadioProduct].filter(Boolean);
 
-	// Remove item from either checkbox or radio
-	function removeProduct(product) {
+	// Remove product from selected list
+	function removeProduct(product: string) {
 		selectedProducts = selectedProducts.filter((p) => p !== product);
 		if (selectedRadioProduct === product) selectedRadioProduct = null;
 	}
 </script>
 
 <div class="p-4 space-y-4">
-	<!-- Always display the heading at the top -->
 	<h2 class="text-xl font-bold">Selected Products</h2>
 
 	{#if combinedSelectedProducts.length > 0}
 		<div class={selectedRadioProduct ? 'w-full' : 'flex flex-wrap gap-2'}>
 			{#each combinedSelectedProducts as product}
-				<div class={selectedRadioProduct === product ? 'w-full mb-4' : 'flex-initial '}>
+				<div class={selectedRadioProduct === product ? 'w-full mb-4' : 'flex-initial'}>
 					<Product productName={product} onRemove={() => removeProduct(product)} />
 				</div>
 			{/each}
@@ -48,10 +46,9 @@
 		<p class="text-gray-500">No products selected</p>
 	{/if}
 
-	<!-- Checkbox section -->
 	{#if options === 'checkbox'}
 		<h2 class="text-xl font-bold">Select Products (Checkbox)</h2>
-		<div class="mb-4">
+		<div>
 			{#each products as product}
 				<Checkbox
 					label={product}
@@ -64,11 +61,9 @@
 				/>
 			{/each}
 		</div>
-
-		<!-- Radio section -->
 	{:else if options === 'radio'}
 		<h2 class="text-xl font-bold">Select a Product (Radio)</h2>
-		<div class="mb-4">
+		<div>
 			{#each products as product}
 				<RadioButton
 					label={product}
