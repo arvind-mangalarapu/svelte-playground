@@ -1,70 +1,45 @@
+<!-- ProductCard.svelte -->
 <script lang="ts">
 	import Checkbox from '$lib/components/selectProduct/Checkbox.svelte';
 	import RadioButton from '$lib/components/selectProduct/RadioButton.svelte';
-	import Product from '$lib/components/selectProduct/Product.svelte';
 
-	const products = [
-		'Product 1',
-		'Product 2',
-		'Product 3',
-		'Product 4',
-		'Product 5',
-		'Product 6',
-		'Product 7',
-		'Product 8',
-		'Product 9',
-		'Product 10'
-	];
+	export let products: { id: number; name: string }[]; // Accept products array with id and name
+	export let options: 'checkbox' | 'radio'; // Accept selection type
+	export let selectedProducts: number[]; // Selected product IDs for checkbox
+	export let selectedRadioProduct: number | null; // Selected product ID for radio
 
-	export let options: 'checkbox' | 'radio';
+	const toggleCheckbox = (productId: number) => {
+		if (selectedProducts.includes(productId)) {
+			selectedProducts = selectedProducts.filter((id) => id !== productId); // Remove if already selected
+		} else {
+			selectedProducts = [...selectedProducts, productId]; // Add if not selected
+		}
+	};
 
-	let selectedProducts: string[] = []; // Checkbox selections
-	let selectedRadioProduct: string | null = null; // Radio selection
-
-	// Combine checkbox and radio selections
-	$: combinedSelectedProducts = [...selectedProducts, selectedRadioProduct].filter(Boolean);
-
-	// Remove product from selected list
-	function removeProduct(product: string) {
-		selectedProducts = selectedProducts.filter((p) => p !== product);
-		if (selectedRadioProduct === product) selectedRadioProduct = null;
-	}
+	const selectRadioProduct = (productId: number) => {
+		selectedRadioProduct = productId; // Set selected radio product
+	};
 </script>
 
-<button
-	on:click={() => (options = options === 'checkbox' ? 'radio' : 'checkbox')}
-	class="text-gray-500 border border-gray-500 hover:text-gray-700 hover:border-gray-700 px-4 py-2 rounded ml-10 mt-10 transition duration-200"
->
-	Toggle</button
->
-
 <div class="p-4 space-y-4">
-	<h2 class="text-xl font-bold">Selected Products</h2>
-
-	{#if combinedSelectedProducts.length > 0}
-		<div class={selectedRadioProduct ? 'w-full' : 'flex flex-wrap gap-2'}>
-			{#each combinedSelectedProducts as product}
-				<div class={selectedRadioProduct === product ? 'w-full mb-4' : 'flex-initial'}>
-					<Product productName={product} onRemove={() => removeProduct(product)} />
-				</div>
-			{/each}
-		</div>
-	{:else}
-		<p class="text-gray-500">No products selected</p>
-	{/if}
+	<!-- Toggle between Checkbox and Radio options -->
+	<button
+		on:click={() => (options = options === 'checkbox' ? 'radio' : 'checkbox')}
+		class="text-gray-500 border border-gray-500 hover:text-gray-700 hover:border-gray-700 px-4 py-2 rounded transition duration-200"
+	>
+		Toggle
+	</button>
 
 	{#if options === 'checkbox'}
 		<h2 class="text-xl font-bold">Select Products (Checkbox)</h2>
 		<div>
 			{#each products as product}
 				<Checkbox
-					label={product}
-					checked={selectedProducts.includes(product)}
-					onChange={(checked) => {
-						selectedProducts = checked
-							? [...selectedProducts, product]
-							: selectedProducts.filter((p) => p !== product);
-					}}
+					value={product.id}
+					label={product.name}
+					name={product.name}
+					checked={selectedProducts.includes(product.id)}
+					onChange={() => toggleCheckbox(product.id)}
 				/>
 			{/each}
 		</div>
@@ -73,12 +48,17 @@
 		<div>
 			{#each products as product}
 				<RadioButton
-					label={product}
+					value={product.id}
+					label={product.name}
 					name="product"
 					selectedValue={selectedRadioProduct}
-					onChange={() => (selectedRadioProduct = product)}
+					onChange={() => selectRadioProduct(product.id)}
 				/>
 			{/each}
 		</div>
 	{/if}
 </div>
+
+<style>
+	/* Add any necessary styles here */
+</style>
