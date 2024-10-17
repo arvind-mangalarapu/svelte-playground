@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Picker from './selectProduct/Picker.svelte';
 	import Icon from '../common/Icon.svelte';
 	import Radio from '../input/Radio.svelte';
 	import Checkbox from '../input/Checkbox.svelte';
@@ -416,3 +417,101 @@
 	</Picker>
 </Modal>
 <Button text="open modal" kind="primary" size="sm" on:click={() => (showModal = true)}></Button>
+
+
+
+<!-- Picker -->
+<script lang="ts">
+	import '../../css/picker.css';
+	import Search from '../input/Search.svelte';
+	import Button from './Button.svelte';
+	import Icon from './Icon.svelte';
+	import Checkbox from '../input/Checkbox.svelte';
+	import ProductSelected from './ProductSelected.svelte';
+	import ProductCard from './ProductCard.svelte';
+	// import ProductCardRadio from './ProductCardRadio.svelte';
+	export let productName = '',
+		// group = [],
+		productData = [],
+		options: 'checkbox' | 'radio',
+		selectedProducts: any[] | '' = '';
+
+	$: console.log('selectedProducts', selectedProducts);
+
+	function removeProduct(id) {
+		selectedProducts = selectedProducts.filter((product) => product !== id);
+	}
+</script>
+
+<main class="mx-auto mt-[28px] max-w-[744px]">
+	<h4 class="text-600 font-medium leading-600 brk-text-default">Title</h4>
+	<div class="mt-[28px] flex gap-3x">
+		<Search placeholder="Search by text" name="search" id="search" value="" classes="w-full" />
+		<Button text="New Item" kind="secondary" size="lg" classes="w-[138px]">
+			<Icon component="plus" slot="leadingIcon" />
+		</Button>
+	</div>
+	<div class=" flex gap-3x">
+		{#if typeof selectedProducts === Array}
+			{#each selectedProducts as product}
+				<ProductSelected productName={product} remove={() => removeProduct(product)} />
+			{/each}
+		{:else}
+			<ProductSelected
+				productName={selectedProducts}
+				remove={() => removeProduct(selectedProducts)}
+			/>
+		{/if}
+	</div>
+	<div
+		class="custom-scrollbar mt-[28px] flex h-[260px] flex-wrap items-start justify-start gap-3x overflow-y-scroll"
+	>
+		{#each productData as { id, name, value }}
+			<ProductCard
+				{options}
+				productName={name}
+				value={name}
+				bind:group={selectedProducts}
+				checked={selectedProducts.includes(name)}
+				{id}
+			/>
+		{/each}
+	</div>
+
+	<!-- <div class="mt-[28px] flex items-center gap-3x">
+		<Checkbox name={productName} id="checkbox" value="checkbox" bind:group=[] />
+		<label for="checkbox">{productName}</label>
+	</div> -->
+
+	<div class="mt-[28px] flex justify-end gap-3x">
+		<Button text="Cancel" kind="tertiary" size="lg" classes="w-[124px]"></Button>
+		<Button text="Save" kind="primary" size="lg" classes="w-[124px]"></Button>
+	</div>
+</main>
+
+<style lang="postcss">
+	/* for firefox  */
+
+	:global(.custom-scrollbar) {
+		scrollbar-width: 4px;
+		scrollbar-color: #adb2c9;
+	}
+	/* for global */
+	:global(.custom-scrollbar::-webkit-scrollbar) {
+		width: 4px;
+	}
+
+	:global(.custom-scrollbar::-webkit-scrollbar-track) {
+		background: #f8f8fa;
+		border-radius: 100px;
+	}
+
+	:global(.custom-scrollbar::-webkit-scrollbar-thumb) {
+		background: #adb2c9;
+		border-radius: 100px;
+	}
+
+	:global(.custom-scrollbar::-webkit-scrollbar-thumb:hover) {
+		background: #adb2c9;
+	}
+</style>
