@@ -106,7 +106,6 @@
 		justify-content: center;
 		align-items: center;
 		position: absolute;
-
 		animation: border 2s linear infinite;
 	}
 
