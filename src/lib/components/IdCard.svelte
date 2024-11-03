@@ -37,72 +37,74 @@
 	};
 </script>
 
-<div class="id-card">
-	<div class="id-hero">
-		<!-- top-content -->
-		<div class="top-content">
-			<div class="top-content-heading">
-				<p>National Association of Street Vendors of India</p>
-				<p>MEMB20243920</p>
+<div class="flex justify-center items-center h-screen bg-black">
+	<div class="id-card">
+		<div class="id-hero">
+			<!-- top-content -->
+			<div class="top-content">
+				<div class="top-content-heading">
+					<p>National Association of Street Vendors of India</p>
+					<p>MEMB20243920</p>
+				</div>
+				<div class="top-content-logo">
+					<img src="/images/logo.jpg" alt="" />
+				</div>
 			</div>
-			<div class="top-content-logo">
-				<img src="/images/logo.jpg" alt="" />
-			</div>
-		</div>
 
-		<!-- middle-content -->
-		<div class="middle-content">
-			<div class="container name-container">
-				<h2 class="content" data-font-size="22">Venkat Karthik Vadlapatla</h2>
-			</div>
-			<div class="middle-content-details-container">
-				<div class="middle-content-details">
-					<ul>
+			<!-- middle-content -->
+			<div class="middle-content">
+				<div class="container name-container">
+					<h2 class="content" data-font-size="22">Venkat Karthik Vadlapatla</h2>
+				</div>
+				<div class="middle-content-details-container">
+					<div class="middle-content-details">
+						<ul>
+							<li>
+								<p>Vending type</p>
+								<p>Stationary</p>
+							</li>
+							<li>
+								<p>Sells</p>
+								<p>Fruits</p>
+							</li>
+						</ul>
+						<div class="middle-content-photo">
+							<!-- <img src="/images/screenshot.png" alt="" /> -->
+
+							<img
+								src="https://images.unsplash.com/photo-1725504836973-a434fa6c4753?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+								alt=""
+							/>
+						</div>
+					</div>
+					<ul class="middle-content-validity">
 						<li>
-							<p>Vending type</p>
-							<p>Stationary</p>
+							<p>Vending since</p>
+							<p>1981</p>
 						</li>
 						<li>
-							<p>Sells</p>
-							<p>Fruits</p>
+							<p>Valid upto</p>
+							<p>14-May-2025</p>
 						</li>
 					</ul>
-					<div class="middle-content-photo">
-						<!-- <img src="/images/screenshot.png" alt="" /> -->
-
-						<img
-							src="https://images.unsplash.com/photo-1725504836973-a434fa6c4753?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-							alt=""
-						/>
-					</div>
 				</div>
-				<ul class="middle-content-validity">
-					<li>
-						<p>Vending since</p>
-						<p>1981</p>
-					</li>
-					<li>
-						<p>Valid upto</p>
-						<p>14-May-2025</p>
-					</li>
-				</ul>
+				<div class="middle-content-address container">
+					<p>Vending Address</p>
+					<p class="content" data-font-size="15">
+						Kajpura Shivmandir, Manendragarh-Chirmiri-Bharatpur, Chhattisgarh, 800014
+					</p>
+				</div>
+				<div class="bg-logo" />
 			</div>
-			<div class="middle-content-address container">
-				<p>Vending Address</p>
+		</div>
+		<!-- bottom-content -->
+		<div class="bottom-content-container">
+			<div class="container bottom-content">
+				<p>Local organization</p>
 				<p class="content" data-font-size="15">
-					Kajpura Shivmandir, Manendragarh-Chirmiri-Bharatpur, Chhattisgarh, 800014
+					Bihar Rajya Footpath Dukandar Swawlambi Sahkari Samiti, Patna
 				</p>
 			</div>
-			<div class="bg-logo" />
-		</div>
-	</div>
-	<!-- bottom-content -->
-	<div class="bottom-content-container">
-		<div class="container bottom-content">
-			<p>Local organization</p>
-			<p class="content" data-font-size="15">
-				Bihar Rajya Footpath Dukandar Swawlambi Sahkari Samiti, Patna
-			</p>
 		</div>
 	</div>
 </div>

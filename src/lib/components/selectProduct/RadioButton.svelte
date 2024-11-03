@@ -10,14 +10,14 @@
 	}
 </script>
 
-<label class="flex items-center mb-2">
+<label class="flex items-center mb-2 text-white">
 	<input
 		type="radio"
 		{value}
 		{name}
 		checked={selectedValue === value}
 		on:change={handleChange}
-		class="mr-2"
+		class="mr-2 text-white"
 	/>
-	<span class="text-gray-700">{label}</span>
+	<span class="text-gray-300">{label}</span>
 </label>

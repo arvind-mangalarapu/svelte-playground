@@ -4,8 +4,25 @@
 	import Product from '$lib/components/selectProduct/Product.svelte';
 
 	// The updated products array will have objects with { id, name }
-	export let products: { id: number; name: string }[]; // Accept products array as a prop
-	export let options: 'checkbox' | 'radio'; // Option to toggle between checkbox and radio
+	export let products: { id: number; name: string }[] = [
+		{
+			id: 1,
+			name: 'Product 1'
+		},
+		{
+			id: 2,
+			name: 'Product 2'
+		},
+		{
+			id: 3,
+			name: 'Product 3'
+		},
+		{
+			id: 4,
+			name: 'Product 4'
+		}
+	]; // Accept products array as a prop
+	export let options: 'checkbox' | 'radio' = 'checkbox'; // Option to toggle between checkbox and radio
 
 	// Selected products for checkbox (store ids of selected products)
 	let selectedProducts: number[] = [];
@@ -32,7 +49,7 @@
 	};
 </script>
 
-<div class="picker-container">
+<div class="picker-containe text-white bg-black h-screen w-screen">
 	<h2 class="text-xl font-bold">Selected Products</h2>
 
 	{#if combinedSelectedProducts.length > 0}
@@ -51,7 +68,3 @@
 	<!-- Pass the products, options, and bind selected products to the ProductCard component -->
 	<ProductCard {products} {options} bind:selectedProducts bind:selectedRadioProduct />
 </div>
-
-<style>
-	/* Add any necessary styles here */
-</style>

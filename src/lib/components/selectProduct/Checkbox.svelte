@@ -9,7 +9,7 @@
 	}
 </script>
 
-<label class="flex items-center mb-2">
+<label class="flex items-center mb-2 text-white">
 	<input type="checkbox" bind:checked {value} on:change={handleChange} class="mr-2" />
-	<span class="text-gray-700">{label}</span>
+	<span class="text-gray-300">{label}</span>
 </label>
