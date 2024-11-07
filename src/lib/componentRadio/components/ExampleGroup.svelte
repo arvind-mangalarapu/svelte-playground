@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let selectedValue: [],
 		value: string,
-		group ];
+		group = [];
 </script>
 
 {#if selectedValue}
