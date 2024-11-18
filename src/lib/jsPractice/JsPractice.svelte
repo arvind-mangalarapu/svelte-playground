@@ -183,7 +183,7 @@
 	}
 	const validatePIN = (pin) => /^\d{4}$|^\d{6}$/.test(pin);
 
-	function greet(name, owner) {
+	function greet2(name, owner) {
 		// Add code here
 		if (name === owner) {
 			return 'Hello boss';
@@ -192,8 +192,100 @@
 		}
 	}
 
-	let n = greet('abhi', 'abhi');
+	function isIsogram(str) {
+		str = str.toLowerCase();
+		for (let i = 0; i < str.length; i++) {
+			for (let j = i + 1; j < str.length; j++) {
+				if (str[i] === str[j]) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 
+	function countSheeps(sheep) {
+		let count = 0;
+		for (let i = 0; i < sheep.length; i++) {
+			if (sheep[i] === true) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	function greet3(name) {
+		//your code here
+		return 'Hello, ' + name + ' how are you doing today?';
+	}
+
+	function removeSmallest(numbers) {
+		let min = Math.min(...numbers);
+		let index = numbers.indexOf(min);
+		return [...numbers.slice(0, index), ...numbers.slice(index + 1)];
+	}
+
+	function likes(names) {
+		// TODO
+		let num = names.length;
+		if (num === 0) {
+			return 'no one likes this';
+		} else if (num === 1) {
+			return names[0] + ' likes this';
+		} else if (num === 2) {
+			return names[0] + ' and ' + names[1] + ' like this';
+		} else if (num === 3) {
+			return names[0] + ', ' + names[1] + ' and ' + names[2] + ' like this';
+		} else {
+			return names[0] + ', ' + names[1] + ' and ' + (num - 2) + ' others like this';
+		}
+	}
+
+	function getCount(str) {
+		let count = 0;
+		for (let i = 0; i < str.length; i++) {
+			if (str[i] === 'a' || str[i] === 'e' || str[i] === 'i' || str[i] === 'o' || str[i] === 'u') {
+				count += 1;
+			}
+		}
+		return count;
+	}
+
+	let n = getCount(
+		'aeiouuhbdefkfvjhwdkjhnnvdkjn;vjklwnljksdqwnqlhddohieaouieuueoiaeaueioaueoaieuiaoaeioueaduoiieuieauiuo'
+	);
+
+	// let n = likes(['Alex', 'Jacob', 'Mark', 'Max']);
+	// let n = removeSmallest([2, 3, 1, 4, 5, 2, 5]);
+	// let n = greet3('abhi');
+	// let n = countSheeps([
+	// 	false,
+	// 	false,
+	// 	true,
+	// 	false,
+	// 	true,
+	// 	true,
+	// 	true,
+	// 	true,
+	// 	true,
+	// 	false,
+	// 	true,
+	// 	false,
+	// 	true,
+	// 	false,
+	// 	false,
+	// 	true,
+	// 	true,
+	// 	true,
+	// 	true,
+	// 	true,
+	// 	false,
+	// 	false,
+	// 	true,
+	// 	false
+	// ]);
+	// let n = isIsogram('mose');
+	// let n = greet('abhi', 'abhi');
 	// let n = validatePIN('1245');
 	// let n = filter_list([
 	// 	1,
@@ -232,6 +324,111 @@
 	// $: n = digitize('arvind');
 </script>
 
-<div class="flex justify-center items-center flex-wrap h-screen w-screen bg-black text-white">
+<div
+	class="flex flex-col gap-10 justify-center items-center flex-wrap h-screen w-screen bg-black text-white"
+>
 	<h1 class="text-5xl">{n}</h1>
+
+	<!-- <div class="h-96 w-96 bg-red-500 border relative after">
+		<h1 class="text-5xl">Hello edfcwfcf</h1>
+	</div>
+
+	<ul>
+		<li class="list-item relative">hello 1</li>
+		<li class="list-item relative">hello 2</li>
+		<li class="list-item relative">hello 3</li>
+		<li class="list-item relative">hello 4</li>
+	</ul> -->
 </div>
+
+<style>
+	.before::before {
+		content: '';
+		position: absolute;
+		top: 0px;
+		left: -99px;
+		height: 0;
+		width: 0;
+		border-left: 50px solid transparent;
+		border-right: 50px solid #ef4444;
+		border-top: 50px solid #ef4444;
+		border-bottom: 50px solid transparent;
+		border-top-left-radius: 30px;
+		z-index: 2;
+	}
+
+	.before::after {
+		content: '';
+		position: absolute;
+		top: -1px;
+		left: -101px;
+		height: 0;
+		width: 0;
+		border-left: 50px solid transparent;
+		border-right: 50px solid #fff;
+		border-top: 50px solid #fff;
+		border-top-left-radius: 30px;
+		border-bottom: 50px solid transparent;
+		border-style: dotted dashed solid double sol #ffffff;
+		z-index: 1;
+	}
+
+	.after::before {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		right: -99px;
+		height: 0;
+		width: 0;
+		border-left: 50px solid #ef4444;
+		border-right: 50px solid transparent;
+		border-top: 50px solid transparent;
+		border-bottom: 50px solid #ef4444;
+		border-top-right-radius: 30px;
+		z-index: 2;
+		border-bottom-right-radius: 30%;
+		border-top-right-radius: 50%;
+	}
+
+	.after::after {
+		content: '';
+		position: absolute;
+		bottom: -1px;
+		right: -101px;
+		height: 0;
+		width: 0;
+		border-left: 50px solid #fff;
+		border-right: 50px solid transparent;
+		border-top: 50px solid transparent;
+		border-bottom: 50px solid #fff;
+		border-top-right-radius: 30px;
+		z-index: 1;
+	}
+
+	.list-item {
+		list-style-type: none;
+		border-left: solid 1px #fff;
+		border-top: solid 1px #fff;
+		border-bottom: solid 1px #fff;
+		width: 200px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		border-top-left-radius: 25px;
+		border-bottom-left-radius: 25px;
+		margin-bottom: 48px;
+	}
+	.list-item:not(:first-child)::after {
+		content: '';
+		position: absolute;
+		height: 50px;
+		border-top: solid 1px #fff;
+		border-bottom: solid 1px #fff;
+		border-right: 1px solid #fff;
+		width: 50px;
+		border-top-right-radius: 25px;
+		border-bottom-right-radius: 25px;
+		right: -25px;
+		top: -50px;
+	}
+</style>
